@@ -8,6 +8,7 @@ const app = require('express')();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const bearerToken = require('express-bearer-token');
+const db = require('./db');
 
 
 logger.info('Starting HTTP Server');
