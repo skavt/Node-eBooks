@@ -3,7 +3,7 @@ const userService = require('../service/authService')
 const login = async (req, res) => {
   const userData = req.body;
 
-  if (Object.keys(userData).length < 2) {
+  if (!Object.keys(userData).includes('email') || !Object.keys(userData).includes('password')) {
     res.send(JSON.stringify({message: 'Email and Password are required'}));
     return;
   }
