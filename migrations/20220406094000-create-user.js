@@ -21,28 +21,30 @@ module.exports = {
         type: Sequelize.STRING(1024),
         allowNull: false,
       },
-      firstName: {
+      first_name: {
         type: Sequelize.STRING(512),
         allowNull: false,
       },
-      lastName: {
+      last_name: {
         type: Sequelize.STRING(512),
         allowNull: false,
       },
-      imagePath: Sequelize.STRING,
-      passwordResetToken: Sequelize.STRING(1024),
-      resetTokenExpireDate: Sequelize.DATE,
-      accessToken: Sequelize.STRING(1024),
-      accessTokenExpireDate: Sequelize.DATE,
+      image_path: Sequelize.STRING,
+      password_reset_token: Sequelize.STRING(1024),
+      reset_token_expire_date: Sequelize.DATE,
+      access_token: Sequelize.STRING(1024),
+      access_token_expire_date: Sequelize.DATE,
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),
+        field: 'updated_at'
       },
       updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),
+        field: 'created_at'
       },
     });
   },

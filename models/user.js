@@ -26,28 +26,30 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(1024),
       allowNull: false,
     },
-    firstName: {
+    first_name: {
       type: DataTypes.STRING(512),
       allowNull: false,
     },
-    lastName: {
+    last_name: {
       type: DataTypes.STRING(512),
       allowNull: false,
     },
-    imagePath: DataTypes.STRING,
-    passwordResetToken: DataTypes.STRING(1024),
-    resetTokenExpireDate: DataTypes.DATE,
-    accessToken: DataTypes.STRING(1024),
-    accessTokenExpireDate: DataTypes.DATE,
+    image_path: DataTypes.STRING,
+    password_reset_token: DataTypes.STRING(1024),
+    reset_token_expire_date: DataTypes.DATE,
+    access_token: DataTypes.STRING(1024),
+    access_token_expire_date: DataTypes.DATE,
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: sequelize.fn('NOW'),
+      field: 'created_at',
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: sequelize.fn('NOW'),
+      field: 'updated_at',
     },
   }, {
     sequelize,

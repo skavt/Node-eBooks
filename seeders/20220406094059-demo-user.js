@@ -10,8 +10,8 @@ module.exports = {
       username: 'Admin',
       email: 'admin@example.com',
       password: crypto.createHash('sha256').update('admin123').digest('base64'),
-      firstName: 'admin',
-      lastName: 'admin',
+      first_name: 'admin',
+      last_name: 'admin',
     }]);
   },
 
