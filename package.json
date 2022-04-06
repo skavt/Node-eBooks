@@ -1,0 +1,30 @@
+{
+  "name": "ebooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-bearer-token": "^2.4.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.18.0",
+    "sequelize-cli": "^6.4.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2"
+  }
+}
