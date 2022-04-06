@@ -1,4 +1,4 @@
-const model = require('../models/index.js');
+const model = require('../models');
 const crypto = require('crypto');
 const randomstring = require('randomstring');
 
