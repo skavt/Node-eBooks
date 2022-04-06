@@ -3,13 +3,10 @@
 const {Model} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    instanceLevelMethod() {
-      return 'test';
-    }
+  class user extends Model {
   }
 
-  User.init({
+  user.init({
     uuid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -54,6 +51,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'User',
+    modelName: 'user',
   });
+
+  return user;
 }
