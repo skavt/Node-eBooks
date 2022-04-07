@@ -21,5 +21,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bearerToken());
 app.use('/', routes);
 
-server.listen(3000);
-logger.info('Listening on *:3000');
+const port = parseInt(process.env.API_PORT) || 3000
+server.listen(port);
+logger.info(`Listening on *:${port}`);
