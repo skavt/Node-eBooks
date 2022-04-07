@@ -4,6 +4,7 @@ const login = async (req, res) => {
   const userData = req.body;
 
   if (!Object.keys(userData).includes('email') || !Object.keys(userData).includes('password')) {
+    res.status(400);
     res.send(JSON.stringify({message: 'Email and Password are required'}));
     return;
   }
@@ -13,6 +14,7 @@ const login = async (req, res) => {
   if (success) {
     res.send(JSON.stringify(user));
   } else {
+    res.status(400);
     res.send(JSON.stringify({message}));
   }
 }

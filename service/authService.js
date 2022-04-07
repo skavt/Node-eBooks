@@ -21,7 +21,16 @@ const login = async (userData) => {
     }
     user.update(params);
 
-    return {success: true, user: user};
+    return {
+      success: true, user: {
+        access_token: user.access_token,
+        username: user.username,
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        uuid: user.uuid,
+      }
+    };
   }
 
   return {success: false, message: 'Email or Password is not correct'};
