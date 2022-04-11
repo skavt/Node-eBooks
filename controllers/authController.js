@@ -16,9 +16,9 @@ const login = async (req, res) => {
     return res.status(400).json(response.messages);
   }
 
-  const {success, user, message} = await userService.login(req.body);
+  const {success, data, message} = await userService.login(req.body);
   if (success) {
-    return res.json({data: user});
+    return res.json({data});
   }
   return res.status(400).json({message})
 }
@@ -35,9 +35,9 @@ const register = async (req, res) => {
     return res.status(400).json(response.messages);
   }
 
-  const {success, user, message} = await userService.register(req.body);
+  const {success, data, message} = await userService.register(req.body);
   if (success) {
-    return res.json({data: user, message});
+    return res.json({data, message});
   }
   return res.status(400).json({message})
 }

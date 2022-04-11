@@ -22,14 +22,7 @@ const login = async (userData) => {
 		user.update(params);
 
 		return {
-			success: true, user: {
-				access_token: user.access_token,
-				username: user.username,
-				email: user.email,
-				first_name: user.first_name,
-				last_name: user.last_name,
-				uuid: user.uuid,
-			}
+			success: true, data: {access_token: user.access_token,}
 		};
 	}
 
@@ -55,14 +48,7 @@ const register = async (userData) => {
 	const user = await model.user.create(params);
 	if (user) {
 		return {
-			success: true, message: `User '${user.email}' created successfully`, user: {
-				access_token: user.access_token,
-				username: user.username,
-				email: user.email,
-				first_name: user.first_name,
-				last_name: user.last_name,
-				uuid: user.uuid,
-			}
+			success: true, message: `User '${user.email}' created successfully`, data: {access_token: user.access_token,}
 		}
 	}
 	return {success: false, message: 'Unable to create user'};
