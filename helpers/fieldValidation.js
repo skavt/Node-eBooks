@@ -1,5 +1,6 @@
 const {check, validationResult} = require("express-validator");
 const {toRemoveUnderScore, toUpperCaseFirst} = require("../helpers/stringFilters");
+const model = require("../models");
 
 const checkRequiredFields = async (fields, req) => {
   for (const field of fields) {
@@ -9,6 +10,16 @@ const checkRequiredFields = async (fields, req) => {
 
 const checkEmail = async (req) => {
   await check('email').isEmail().withMessage('This must be a valid email').run(req);
+}
+
+const checkUserByEmail = async (req) => {
+  await check('email').custom(async (value) => {
+    return await model.user.findOne({where: {email: value}}).then(user => {
+      if (user) {
+        return Promise.reject(`Email '${value}' is already in use`);
+      }
+    });
+  }).run(req);
 }
 
 const checkPassword = async (req) => {
@@ -43,6 +54,7 @@ const setErrors = (req) => {
 module.exports = {
   checkRequiredFields,
   checkEmail,
+  checkUserByEmail,
   checkPassword,
   matchPasswords,
   setErrors,

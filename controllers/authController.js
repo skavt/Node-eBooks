@@ -4,7 +4,7 @@ const {
   setErrors,
   checkEmail,
   checkPassword,
-  matchPasswords
+  matchPasswords, checkUserByEmail
 } = require("../helpers/fieldValidation");
 
 const login = async (req, res) => {
@@ -17,18 +17,16 @@ const login = async (req, res) => {
   }
 
   const {success, user, message} = await userService.login(req.body);
-
   if (success) {
-    res.send(JSON.stringify(user));
-  } else {
-    res.status(400);
-    res.send(JSON.stringify({message}));
+    return res.json({data: user});
   }
+  return res.status(400).json({message})
 }
 
 const register = async (req, res) => {
   await checkRequiredFields(['email', 'password', 'repeat_password', 'first_name', 'last_name'], req);
   await checkEmail(req);
+  await checkUserByEmail(req);
   await checkPassword(req);
   await matchPasswords(req);
 
@@ -37,14 +35,11 @@ const register = async (req, res) => {
     return res.status(400).json(response.messages);
   }
 
-  const {success, user, message} = await userService.login(req.body);
-
+  const {success, user, message} = await userService.register(req.body);
   if (success) {
-    res.send(JSON.stringify(user));
-  } else {
-    res.status(400);
-    res.send(JSON.stringify({message}));
+    return res.json({data: user, message});
   }
+  return res.status(400).json({message})
 }
 
 module.exports = {
