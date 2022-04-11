@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 const bearerToken = require('express-bearer-token');
 const db = require('./db');
 
-
 logger.info('Starting HTTP Server');
 const server = http.createServer(app);
 

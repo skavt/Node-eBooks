@@ -1,7 +1,13 @@
-const capitalizeFirstLetter = (string) => {
-  return `${string[0].toUpperCase()}${string.slice(1)}`;
+const toRemoveUnderScore = (value) => {
+  if (!value) return '';
+  return value.replace(/_/g, ' ');
+}
+
+const toUpperCaseFirst = (value) => {
+  return value ? `${value[0].toUpperCase()}${value.slice(1)}` : '';
 }
 
 module.exports = {
-  capitalizeFirstLetter,
+  toUpperCaseFirst,
+  toRemoveUnderScore,
 }
