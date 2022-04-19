@@ -42,7 +42,17 @@ const register = async (req, res) => {
   return res.status(400).json({message})
 }
 
+const getCurrentUser = async (req, res) => {
+  const {success, data} = await userService.findUserByToken(req.token);
+
+  if (success) {
+    return res.json({data});
+  }
+  return res.status(400)
+}
+
 module.exports = {
   login,
   register,
+  getCurrentUser,
 }
