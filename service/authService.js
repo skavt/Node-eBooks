@@ -54,6 +54,23 @@ const register = async (userData) => {
   return {success: false, message: 'Unable to create user'};
 }
 
+const getCurrentUser = async (token) => {
+  const {success, data} = await findUserByToken(token);
+
+  if (success) {
+    return {
+      success: true, data: {
+        uuid: data.uuid,
+        email: data.email,
+        username: data.username,
+        first_name: data.first_name,
+        last_name: data.last_name,
+      }
+    };
+  }
+  return {success: false};
+}
+
 const findUserByToken = async (token) => {
   const user = await model.user.findOne({where: {access_token: token}});
 
@@ -66,5 +83,5 @@ const findUserByToken = async (token) => {
 module.exports = {
   login,
   register,
-  findUserByToken,
+  getCurrentUser,
 }

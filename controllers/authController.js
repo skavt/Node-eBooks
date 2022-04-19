@@ -43,7 +43,7 @@ const register = async (req, res) => {
 }
 
 const getCurrentUser = async (req, res) => {
-  const {success, data} = await userService.findUserByToken(req.token);
+  const {success, data} = await userService.getCurrentUser(req.token);
 
   if (success) {
     return res.json({data});
