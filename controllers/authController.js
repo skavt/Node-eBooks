@@ -6,6 +6,7 @@ const {
   checkPassword,
   matchPasswords, checkUserByEmail
 } = require("../helpers/fieldValidation");
+const {confirmMail} = require('../notifications/confirmMailTemplate')
 
 const login = async (req, res) => {
   await checkRequiredFields(['email', 'password'], req);
@@ -37,7 +38,8 @@ const register = async (req, res) => {
 
   const {success, data, message} = await userService.register(req.body);
   if (success) {
-    return res.json({data, message});
+    await confirmMail(data);
+    return res.json({message});
   }
   return res.status(400).json({message})
 }

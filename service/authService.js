@@ -39,8 +39,8 @@ const register = async (userData) => {
     first_name: userData.first_name,
     last_name: userData.last_name,
     password: crypto.createHash('sha256').update(userData.password).digest('base64'),
-    access_token: randomstring.generate(256),
-    access_token_expire_date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7),
+    register_token: randomstring.generate(256),
+    register_token_expire_date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7),
     created_at: today,
     updated_at: today,
   }
@@ -48,7 +48,13 @@ const register = async (userData) => {
   const user = await model.user.create(params);
   if (user) {
     return {
-      success: true, message: `User '${user.email}' created successfully`, data: {access_token: user.access_token,}
+      success: true, message: `User '${user.email}' created successfully. Please confirm your email`, data: {
+        username: user.username,
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        register_token: user.register_token,
+      }
     }
   }
   return {success: false, message: 'Unable to create user'};
