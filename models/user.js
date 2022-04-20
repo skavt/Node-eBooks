@@ -34,9 +34,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(512),
       allowNull: false,
     },
+    status: DataTypes.STRING,
     image_path: DataTypes.STRING,
     password_reset_token: DataTypes.STRING(1024),
     reset_token_expire_date: DataTypes.DATE,
+    register_token: DataTypes.STRING(1024),
+    register_token_expire_date: DataTypes.DATE,
     access_token: DataTypes.STRING(1024),
     access_token_expire_date: DataTypes.DATE,
     createdAt: {

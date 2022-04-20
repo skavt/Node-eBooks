@@ -29,9 +29,12 @@ module.exports = {
         type: Sequelize.STRING(512),
         allowNull: false,
       },
+      status: Sequelize.STRING,
       image_path: Sequelize.STRING,
       password_reset_token: Sequelize.STRING(1024),
       reset_token_expire_date: Sequelize.DATE,
+      register_token: Sequelize.STRING(1024),
+      register_token_expire_date: Sequelize.DATE,
       access_token: Sequelize.STRING(1024),
       access_token_expire_date: Sequelize.DATE,
       createdAt: {

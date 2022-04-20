@@ -12,6 +12,7 @@ module.exports = {
       password: crypto.createHash('sha256').update('admin123').digest('base64'),
       first_name: 'admin',
       last_name: 'admin',
+      status: 'active',
     }]);
   },
 
