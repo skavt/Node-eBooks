@@ -38,7 +38,7 @@ const register = async (req, res) => {
 
   const {success, data, message} = await userService.register(req.body);
   if (success) {
-    await confirmMail(data);
+    confirmMail(data);
     return res.json({message});
   }
   return res.status(400).json({message})

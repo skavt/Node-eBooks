@@ -10,8 +10,8 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-const sendMail = async (to, subject, textMsg, htmlMsg) => {
-  return await transporter.sendMail({
+const sendMail = (to, subject, textMsg, htmlMsg) => {
+  return transporter.sendMail({
     from: process.env.EMAIL_ROBOT_EMAIL,
     to: to,
     subject: subject,
